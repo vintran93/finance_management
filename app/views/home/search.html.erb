@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Search for a specific cryptocurrency or stock.</h3>
+  </div>
+<div class="panel-body">
+
+<br>
+
+<%= form_tag home_search_path, :method => 'POST' do %>
+    <%= text_field_tag 'sym', nil, placeholder: 'Enter Crypto Symbol', size: 50 %>
+    <%= submit_tag 'Lookup Quote' %>
+<% end %>
+
+<br><br>
+
+<%= form_tag home_search_path, :method => 'POST' do %>
+    <%= text_field_tag 'sym', nil, placeholder: 'Enter Stock Symbol', size: 50 %>
+    <%= submit_tag 'Lookup Quote' %>
+<% end %>
+
+<br>
+
+<br><br>
+
+<% if @symbol %>
+    <% for x in @search_coin['data'] %>
+        <% if @symbol == x['symbol'] %>
+            <%= x['symbol'] %> <br><br>
+            <%= x['name'] %>: <br><br> 
+           $ <%= x['quote']['USD']['price'] %> <br><br>
+            Rank: <%= x['cmc_rank'] %> <br><br>
+        <% end %>
+    <% end %>
+<% end %>
