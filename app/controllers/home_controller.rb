@@ -42,3 +42,7 @@ class HomeController < ApplicationController
   def search_stocks
   end
 end
+
+
+#<li><%= link_to "List Cryptos", cryptos_path %></li>
+#<li><%= link_to "Add New", new_crypto_path %></li>
